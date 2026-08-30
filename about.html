@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>About Us | AmaPlumber Plumbing &amp; Gas</title>
+<meta name="description" content="AmaPlumber Plumbing & Gas is a family-run plumbing and gas business based north of Perth. Honest, reliable and on call 24/7."/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='11' fill='%230d1424'/%3E%3Ccircle cx='24' cy='27' r='13' fill='none' stroke='%23394C7F' stroke-width='4.5'/%3E%3Cpath d='M24 5c-3.4 3.4-5 6.5-4.2 9.6-1.7-1.5-2.8-3.1-2.8-3.1-2.5 4-1.5 8.3 2.4 10.7-2.2 0-4.1-1.5-4.1-1.5-.2 5 3.6 8.3 8.7 8.3s9-3.7 9-8.9C33 13 29.2 8.7 24 5Z' fill='%23E75603'/%3E%3Cpath d='M26.5 20.5c-2.6 1-4 3.4-3.2 5.9.7 2.1 3 3.2 5.1 2.4 2.3-.9 3.3-3.3 2.4-5.4-.5-1.3-1.7-2.4-3.1-2.7Z' fill='%23a7b6dc'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://api.fontshare.com"/>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Plumber","name":"AmaPlumber Plumbing & Gas","telephone":"+61 403 045 067","email":"amaplumber.perth@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Beldon","addressRegion":"WA","postalCode":"6027","addressCountry":"AU"},"openingHours":"Mo-Su 00:00-24:00","areaServed":"Perth, WA"}
+</script>
+<style>
+:root{
+  --bg:#0a0e1a; --bg2:#070a13; --line:rgba(255,255,255,.09);
+  --text:#edf0f6; --mut:#848484; --navy:#394C7F; --navy-lt:#a7b6dc; --orange:#E75603;
+  --font-d:'Clash Display',sans-serif; --font-b:'Satoshi',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:16px/1.65 var(--font-b);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:4px}
+
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+.bt{border-top:1px solid rgba(255,255,255,.05)}
+
+/* header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:90;background:rgba(8,12,22,.92);backdrop-filter:blur(16px) saturate(1.3);border-bottom:1px solid var(--line)}
+.hdr-in{max-width:1280px;margin:auto;display:flex;align-items:center;justify-content:space-between;height:72px;padding-inline:clamp(20px,4vw,40px);gap:20px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand svg{filter:drop-shadow(0 3px 10px rgba(0,0,0,.4))}
+.brand span{font-family:'Yellowtail',cursive;font-size:1.45rem;color:#a7b6dc;letter-spacing:.02em}
+.hdr-nav{display:flex;gap:32px}
+.hdr-nav a{font:500 14.5px var(--font-b);color:var(--mut);position:relative;transition:color .25s;padding:6px 0}
+.hdr-nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--orange);border-radius:2px;transition:width .35s cubic-bezier(.22,1,.36,1)}
+.hdr-nav a:hover{color:var(--text)}
+.hdr-nav a:hover::after,.hdr-nav a.active::after{width:100%}
+.hdr-r{display:flex;align-items:center;gap:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 15px/1 var(--font-b);padding:14px 24px;border-radius:12px;border:1px solid transparent;cursor:pointer;transition:transform .25s,background .25s;white-space:nowrap}
+.btn-copper{background:var(--orange);color:#131a2e}
+.btn-copper:hover{background:#f26a1c;transform:translateY(-2px)}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:42px;height:42px;color:var(--text);cursor:pointer;align-items:center;justify-content:center}
+
+/* main */
+main{padding-top:72px}
+.page-hero{padding:92px 0 76px;background:radial-gradient(800px 560px at 76% 20%,rgba(57,76,127,.26),transparent 65%)}
+.page-hero h1{font-family:var(--font-d);font-size:clamp(2.4rem,5.6vw,4rem);line-height:1.05;margin-bottom:18px}
+.page-hero p{color:#b6c1d9;font-size:17px;max-width:560px}
+
+.sec{padding:78px 0}
+.shead{margin-bottom:42px;max-width:680px}
+.shead span{display:inline-flex;align-items:center;gap:12px;font:500 12px/1 var(--font-b);letter-spacing:.22em;text-transform:uppercase;color:var(--navy-lt);margin-bottom:16px}
+.shead h2{font-family:var(--font-d);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;margin-bottom:14px}
+.shead p{color:var(--mut);font-size:16.5px}
+
+/* story */
+.story-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.story-text p{color:#c3cddd;font-size:16.5px;margin-bottom:16px}
+.story-text strong{color:var(--text)}
+.story-box{background:rgba(167,182,220,.05);border:1px solid var(--line);border-radius:22px;padding:32px}
+.story-box h3{font-family:var(--font-d);font-size:1.5rem;margin-bottom:10px}
+.story-box p{color:var(--mut);font-size:15px}
+
+/* values */
+.values{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.value{background:rgba(167,182,220,.04);border:1px solid var(--line);border-radius:18px;padding:26px;transition:transform .25s,border-color .25s}
+.value:hover{transform:translateY(-3px);border-color:rgba(167,182,220,.35)}
+.value h4{font-family:var(--font-d);font-size:18px;margin:16px 0 8px;color:var(--text)}
+.value p{color:var(--mut);font-size:14.5px}
+.value .ic{width:44px;height:44px;border-radius:12px;border:1px solid rgba(167,182,220,.25);display:grid;place-items:center;color:var(--navy-lt)}
+
+/* area */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.chip{padding:9px 17px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:14px;color:#c3cddd}
+.areas-note{color:var(--mut);font-size:15px}
+.areas-note a{color:var(--orange);text-decoration:underline;text-underline-offset:4px}
+
+/* cta */
+.cta-sec{padding:84px 0;background:radial-gradient(700px 420px at 20% 50%,rgba(231,86,3,.12),transparent 65%)}
+.cta-box{background:rgba(167,182,220,.05);border:1px solid var(--line);border-radius:24px;padding:54px;position:relative;overflow:hidden}
+.cta-box::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 60%,rgba(57,76,127,.12));pointer-events:none}
+.cta-box h2{font-family:var(--font-d);font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:14px;position:relative}
+.cta-box p{color:#b6c1d9;max-width:540px;position:relative}
+.cta-btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;position:relative}
+
+/* footer */
+.foot{border-top:1px solid var(--line);background:var(--bg2)}
+.foot-in{display:grid;grid-template-columns:1.5fr .8fr 1.1fr;gap:44px;padding:64px 0 44px}
+.foot-blurb{color:var(--mut);font-size:14.5px;margin-top:18px;max-width:380px}
+.foot-col h4{font:600 11.5px var(--font-b);letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:20px}
+.foot-col a,.foot-col span{display:block;color:var(--mut);font-size:14.5px;margin-bottom:12px;transition:color .25s}
+.foot-col a:hover{color:var(--orange)}
+.frow{display:flex;gap:11px;align-items:flex-start;color:var(--mut);font-size:14.5px;margin-bottom:13px}
+.foot-bar{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:22px 0;border-top:1px solid rgba(255,255,255,.06);color:var(--mut);font-size:13px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .story-grid{grid-template-columns:1fr;gap:40px}
+  .hdr-nav{display:none}
+  .burger{display:inline-flex}
+}
+@media (max-width:620px){
+  .foot-in{grid-template-columns:1fr}
+  .cta-box{padding:34px 24px}
+  .page-hero{padding:72px 0 60px}
+}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="hdr-in">
+    <a href="index.html" class="brand" aria-label="AmaPlumber Plumbing & Gas — home">
+      <svg width="42" height="42" viewBox="0 0 48 48" fill="none" role="img" aria-label="AmaPlumber logo">
+        <circle cx="24" cy="27" r="13" stroke="#394C7F" stroke-width="4.5"/>
+        <path d="M24 5c-3.4 3.4-5 6.5-4.2 9.6-1.7-1.5-2.8-3.1-2.8-3.1-2.5 4-1.5 8.3 2.4 10.7-2.2 0-4.1-1.5-4.1-1.5-.2 5 3.6 8.3 8.7 8.3s9-3.7 9-8.9C33 13 29.2 8.7 24 5Z" fill="#E75603"/>
+        <path d="M26.5 20.5c-2.6 1-4 3.4-3.2 5.9.7 2.1 3 3.2 5.1 2.4 2.3-.9 3.3-3.3 2.4-5.4-.5-1.3-1.7-2.4-3.1-2.7Z" fill="#a7b6dc"/>
+      </svg>
+      <span>AmaPlumber</span>
+    </a>
+    <nav class="hdr-nav">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#testimonials">Testimonials</a>
+      <a href="about.html" class="active">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="hdr-r">
+      <a class="btn btn-copper" href="tel:+61403045067">0403 045 067</a>
+      <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav" onclick="toggleMenu()">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobile-nav" style="display:none;position:fixed;top:72px;left:0;right:0;background:rgba(8,11,20,.97);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);z-index:89;padding:20px;flex-direction:column;gap:8px">
+  <a href="index.html#home" style="font:600 22px var(--font-d);padding:10px 0;color:var(--text)">Home</a>
+  <a href="index.html#services" style="font:600 22px var(--font-d);padding:10px 0;color:var(--text)">Services</a>
+  <a href="index.html#projects" style="font:600 22px var(--font-d);padding:10px 0;color:var(--text)">Projects</a>
+  <a href="index.html#testimonials" style="font:600 22px var(--font-d);padding:10px 0;color:var(--text)">Testimonials</a>
+  <a href="about.html" style="font:600 22px var(--font-d);padding:10px 0;color:var(--orange)">About</a>
+  <a href="index.html#contact" style="font:600 22px var(--font-d);padding:10px 0;color:var(--text)">Contact</a>
+</div>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <span style="display:inline-flex;align-items:center;gap:10px;font:500 12px var(--font-b);letter-spacing:.22em;text-transform:uppercase;color:var(--navy-lt);margin-bottom:14px"><i style="width:8px;height:8px;border-radius:50%;background:var(--orange)"></i>About us</span>
+      <h1>Honest plumbing, run by a local family.</h1>
+      <p>AmaPlumber Plumbing &amp; Gas is a family-run business based north of Perth. We turn up when we say we will, fix the problem properly and leave the place tidy.</p>
+    </div>
+  </section>
+
+  <section class="sec bt" id="story">
+    <div class="wrap story-grid">
+      <div class="story-text">
+        <div class="shead" style="margin-bottom:28px">
+          <span>Our story</span>
+          <h2>Who we are</h2>
+        </div>
+        <p>AmaPlumber Plumbing &amp; Gas is a <strong>family-run business based north of Perth</strong>. We have built our name on honest, reliable service — every time.</p>
+        <p>Our services cover <strong>blocked drains, hot water installation, burst pipes and drainage</strong>. We perform every task to the best of our ability, with an incredible focus on our clients' requirements and an eye for the small details that make a difference.</p>
+        <p>We are known for being <strong>quick, friendly and reliable</strong>. We are available <strong>24/7</strong> for all your plumbing and gas needs, so please don't hesitate to give us a call.</p>
+      </div>
+      <div class="story-box">
+        <h3>Why locals call us first</h3>
+        <p>From emergency call-outs at 5am to planned hot water upgrades, we treat every job as if it were at our own home. No shortcuts, no surprises, and no leaving a mess behind.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bt" id="values">
+    <div class="wrap">
+      <div class="shead">
+        <span>How we work</span>
+        <h2>The values that keep us on the tools</h2>
+        <p>These aren't buzzwords — they are what our regular customers keep telling us back.</p>
+      </div>
+      <div class="values">
+        <div class="value">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <h4>On call 24/7</h4>
+          <p>Burst pipes don't wait for business hours, and neither do we. Emergency plumbing, any day, any time.</p>
+        </div>
+        <div class="value">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg></div>
+          <h4>Licensed & qualified</h4>
+          <p>Fully licensed plumbers and gas fitters — residential, commercial and everything between.</p>
+        </div>
+        <div class="value">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h4>Upfront & honest</h4>
+          <p>We quote before we start, explain what's needed and stick to the price. No hidden costs.</p>
+        </div>
+        <div class="value">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7Z"/></svg></div>
+          <h4>Left tidy</h4>
+          <p>We don't consider a job done until it's tested, cleaned up and guaranteed. Tidy van, tidy site.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bt" id="area">
+    <div class="wrap">
+      <div class="shead">
+        <span>Service area</span>
+        <h2>Proudly covering Perth's north</h2>
+        <p>Based in Beldon and on the road every day throughout the northern suburbs.</p>
+      </div>
+      <div class="chips">
+        <span class="chip">Beldon</span>
+        <span class="chip">Banksia Grove</span>
+        <span class="chip">Kinross</span>
+        <span class="chip">Ashby</span>
+        <span class="chip">Currambine</span>
+        <span class="chip">Joondalup</span>
+        <span class="chip">Wanneroo</span>
+        <span class="chip">Ocean Reef</span>
+        <span class="chip">Mullaloo</span>
+        <span class="chip">Craigie</span>
+        <span class="chip">Woodvale</span>
+        <span class="chip">Wangara</span>
+        <span class="chip">Darch</span>
+        <span class="chip">Greenwood</span>
+        <span class="chip">Padbury</span>
+        <span class="chip">Hillarys</span>
+        <span class="chip">Carramar</span>
+        <span class="chip">Tapping</span>
+        <span class="chip">Burns Beach</span>
+        <span class="chip">Connolly</span>
+        <span class="chip">Edgewater</span>
+        <span class="chip">Hamersley</span>
+        <span class="chip">Marangaroo</span>
+        <span class="chip">Gnangara</span>
+        <span class="chip">Pearsall</span>
+        <span class="chip">Jandabap</span>
+        <span class="chip">Sinagra</span>
+        <span class="chip">Duncraig</span>
+      </div>
+      <p class="areas-note">Not on the list? <a href="tel:+61403045067">Give us a call</a> — if we can't help, we'll point you to someone who can.</p>
+    </div>
+  </section>
+
+  <section class="cta-sec">
+    <div class="wrap">
+      <div class="cta-box">
+        <h2>Need a plumber right now?</h2>
+        <p>Blocked drain, burst pipe, no hot water or gas issue — we are on call 24/7 across Perth's northern suburbs. One call and we'll be on our way.</p>
+        <div class="cta-btns">
+          <a class="btn btn-copper" href="tel:+61403045067">Call 0403 045 067</a>
+          <a class="btn" href="index.html#contact" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);color:var(--text)">Request a call back</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <a href="index.html" class="brand" aria-label="AmaPlumber Plumbing & Gas — home">
+        <svg width="42" height="42" viewBox="0 0 48 48" fill="none" role="img" aria-label="AmaPlumber logo">
+          <circle cx="24" cy="27" r="13" stroke="#394C7F" stroke-width="4.5"/>
+          <path d="M24 5c-3.4 3.4-5 6.5-4.2 9.6-1.7-1.5-2.8-3.1-2.8-3.1-2.5 4-1.5 8.3 2.4 10.7-2.2 0-4.1-1.5-4.1-1.5-.2 5 3.6 8.3 8.7 8.3s9-3.7 9-8.9C33 13 29.2 8.7 24 5Z" fill="#E75603"/>
+          <path d="M26.5 20.5c-2.6 1-4 3.4-3.2 5.9.7 2.1 3 3.2 5.1 2.4 2.3-.9 3.3-3.3 2.4-5.4-.5-1.3-1.7-2.4-3.1-2.7Z" fill="#a7b6dc"/>
+        </svg>
+        <span style="font-family:'Yellowtail',cursive;font-size:1.45rem;color:#a7b6dc">AmaPlumber</span>
+      </a>
+      <p class="foot-blurb">A family-run plumbing &amp; gas business based north of Perth. Honest, reliable and on call 24/7 for blocked drains, hot water, burst pipes and gas work.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Useful links</h4>
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#testimonials">Testimonials</a>
+      <a href="about.html">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="foot-col">
+      <h4>Contact details</h4>
+      <span class="frow" style="align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Beldon, Perth, WA, 6027</span>
+      <a class="frow" href="tel:+61403045067" style="align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> 0403 045 067</a>
+      <a class="frow" href="mailto:amaplumber.perth@gmail.com" style="align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> amaplumber.perth@gmail.com</a>
+      <span class="frow" style="align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Mon–Sun: Open 24 hours</span>
+    </div>
+  </div>
+  <div class="wrap foot-bar">
+    <span>&copy; 2025 AmaPlumber Plumbing &amp; Gas — Beldon, Perth WA</span>
+    <span>Open 24 hours, 7 days</span>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  const m=document.getElementById('mobile-nav');
+  const b=document.querySelector('.burger');
+  if(m.style.display==='none'){m.style.display='flex';b.setAttribute('aria-expanded','true');}
+  else{m.style.display='none';b.setAttribute('aria-expanded','false');}
+}
+</script>
+</body>
+</html>
