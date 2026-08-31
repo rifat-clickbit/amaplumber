@@ -453,6 +453,23 @@ a.gl-row:hover strong{color:var(--navy-lt)}
   .marquee-track,.sv [style*="animation"],.hero-scr b,.dot,.pulse-ring,.proc-line,.boot svg{animation:none!important}
   .pg,.rise{animation:none!important;opacity:1!important;transform:none!important}
 }
+/* ---------- safety fixes for contact & footer ---------- */
+section#contact .wrap.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+section#contact .ct-form.glass{background:rgba(167,182,220,.08);border:1px solid var(--line);border-radius:22px;padding:32px}
+section#contact .f-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+section#contact .f-grid label{display:flex;flex-direction:column;gap:8px}
+section#contact .f-grid .full{grid-column:1/-1}
+section#contact .f-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:22px;flex-wrap:wrap}
+section#contact .f-note{display:inline-flex;align-items:center;gap:8px}
+footer.foot .foot-in{display:grid;grid-template-columns:1.5fr .7fr .9fr 1.1fr;gap:44px;padding:70px 0 50px}
+@media (max-width:760px){
+  section#contact .wrap.ct-grid{grid-template-columns:1fr}
+  footer.foot .foot-in{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  section#contact .f-grid{grid-template-columns:1fr}
+  footer.foot .foot-in{grid-template-columns:1fr}
+}
 </style>
 <script type="importmap">
 {
@@ -1404,7 +1421,6 @@ function Contact({showToast}){
       <div className="ct-l">
         <SectionHead kicker="Contact us" title="Tell us what's blocked, burst or cold."
           sub="Call for the fastest response — or drop your details here and we'll ring you back. Quotes are upfront and honest, every time."/>
-        <Reveal delay={.1}>
           <div className="ct-rows">
             <a className="ct-row glass" href={PHONE_HREF}>
               <span className="ct-ic"><Icon name="phone" size={18}/></span>
@@ -1423,9 +1439,8 @@ function Contact({showToast}){
               {now&&<span className="ct-live"><i className="dot"/>It's {now} in Perth — we're open</span>}
             </div>
           </div>
-        </Reveal>
       </div>
-      <Reveal delay={.15} className="ct-form glass">
+      <div className="ct-form glass">
         <form onSubmit={submit} noValidate>
           <h3>Request a call back</h3>
           <div className="f-grid">
@@ -1450,7 +1465,7 @@ function Contact({showToast}){
             <span className="f-note"><Icon name="shield" size={15}/>Upfront quote before we start. No surprises.</span>
           </div>
         </form>
-      </Reveal>
+      </div>
     </div>
   </section>);
 }
