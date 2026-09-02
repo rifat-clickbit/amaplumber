@@ -23,14 +23,19 @@ try{ if(/debug/i.test(location.search+location.hash)) document.body.classList.ad
 function getRoute(){
   let h="";
   try{ h=decodeURIComponent(location.hash||""); }catch(e){ h=location.hash||""; }
-  /* accepts #/about, #about, #!/about, any case */
-  return h.toLowerCase().indexOf("about")>-1 ? "about" : "home";
+  h=h.toLowerCase();
+  /* accepts #/about, #about, #!/about, #/services, etc., any case */
+  if(h.indexOf("about")>-1) return "about";
+  if(h.indexOf("services")>-1) return "services";
+  if(h.indexOf("projects")>-1) return "projects";
+  if(h.indexOf("contact")>-1) return "contact";
+  return "home";
 }
 function applyRouteToDOM(r){
-  const ph=document.getElementById("pg-home");
-  const pa=document.getElementById("pg-about");
-  if(ph) ph.hidden=(r!=="home");
-  if(pa) pa.hidden=(r!=="about");
+  ["home","about","services","projects","contact"].forEach(name=>{
+    const el=document.getElementById("pg-"+name);
+    if(el) el.hidden=(r!==name);
+  });
   const pill=document.getElementById("amaRoutePill");
   if(pill) pill.textContent="ROUTE: "+r.toUpperCase();
 }
@@ -77,7 +82,7 @@ function Icon({name,size=20,stroke=1.7,filled=false,className}){
 
 /* ============ logo ============ */
 function Logo({h=46}){
-  return(<img src="img/2022-12-05_08_17_09-Facebook-removebg-preview.png" alt="AmaPlumber Plumbing & Gas" loading="eager" className="logo-img" style={{height:h,width:"auto",display:"block"}}/>);
+  return(<img src="img/2022-12-05_08_17_09-Facebook-removebg-preview.png" alt="AmaPlumber Plumbing & Gas" loading="eager" className="logo-img" style={{height:h,width:"auto",display:"block",maxWidth:"100%"}}/>);
 }
 
 /* ============ shared UI bits ============ */
@@ -178,7 +183,7 @@ function Rig({children}){
     g.current.rotation.set(r.x,r.y+p*.45,0);
     g.current.position.y=p*1.55;
     const fr=size.width<680
-      ?{s:.62,l:[1.15,-.32,0]}
+      ?{s:.95,l:[1.0,0.0,0]}
       :size.width<1150
       ?{s:.8,l:[1.0,-.16,0]}
       :{s:.95,l:[.6,-.1,0]};
@@ -339,11 +344,11 @@ function Drip({flowRef}){
 /* ============ header ============ */
 const NAV=[
   {label:"Home",href:"#home",go:"home"},
-  {label:"Services",href:"#services",section:"#services"},
+  {label:"Services",href:"#/services",go:"services"},
   {label:"About",href:"#/about",go:"about"},
-  {label:"Projects",href:"#projects",section:"#projects"},
+  {label:"Projects",href:"#/projects",go:"projects"},
   {label:"Testimonials",href:"#testimonials",section:"#testimonials"},
-  {label:"Contact",href:"#contact",section:"#contact"},
+  {label:"Contact",href:"#/contact",go:"contact"},
 ];
 function Header({route,go}){
   const [sc,setSc]=useState(false);
@@ -362,7 +367,7 @@ function Header({route,go}){
         <nav className="hdr-nav">
           {NAV.map(l=>(
             <a key={l.label} href={l.href}
-              className={(l.go==="about"&&route==="about")?"active":""}
+              className={l.go===route?"active":""}
               onClick={navClick(()=>l.go?go[l.go]():go.section(l.section))}>{l.label}</a>))}
         </nav>
         <div className="hdr-r">
@@ -386,7 +391,7 @@ function Header({route,go}){
 }
 
 /* ============ hero ============ */
-function Hero({active}){
+function Hero({active,go}){
   const [on,setOn]=useState(true);
   const flowRef=useRef(1);
   const {scrollYProgress}=useScroll();
@@ -436,8 +441,8 @@ function Hero({active}){
         <motion.p className="hero-sub" variants={fade}>AmaPlumber is a family-run plumbing &amp; gas crew based north of Perth. Blocked drains, hot water systems, burst pipes and gas work — fixed fast, priced fair, left tidy. On call <strong>24/7</strong>.</motion.p>
         <motion.div className="hero-cta" variants={fade}>
           <Magnetic><a className="btn btn-copper pe" href={PHONE_HREF}><Icon name="phone" size={17}/>Call {PHONE}</a></Magnetic>
-          <Magnetic><a className="btn btn-ghost pe" href="#services"
-            onClick={e=>{e.preventDefault();scrollToSection("#services");}}>Explore our services<Icon name="arrow" size={16}/></a></Magnetic>
+          <Magnetic><a className="btn btn-ghost pe" href="#/services"
+            onClick={e=>{e.preventDefault();go.services();}}>Explore our services<Icon name="arrow" size={16}/></a></Magnetic>
         </motion.div>
         <motion.div className="hero-facts" variants={fade}>
           <span className="hf"><Icon name="clock" size={16}/>24/7 emergency call-outs</span>
@@ -707,13 +712,14 @@ function Process(){
 }
 
 /* ============ projects ============ */
+/* Replace these Unsplash stock photos with actual AmaPlumber project photos when available. */
 const PROJECTS=[
-  {seed:"amaplumber-hotwater",cls:"p-a",tag:"Hot water",title:"50L electric swap-over",loc:"Joondalup"},
-  {seed:"amaplumber-drain",cls:"p-w",tag:"Drainage",title:"Blocked main cleared & CCTV'd",loc:"Wanneroo"},
-  {seed:"amaplumber-gas",cls:"p-s",tag:"Gas",title:"Bayonet heater point",loc:"Currambine"},
-  {seed:"amaplumber-emergency",cls:"p-s",tag:"Emergency",title:"Burst pipe, 5:40am call-out",loc:"Ocean Reef"},
-  {seed:"amaplumber-bathroom",cls:"p-w",tag:"Bathroom",title:"Full re-plumb & fit-off",loc:"Hillarys"},
-  {seed:"amaplumber-kitchen",cls:"p-s",tag:"Kitchen",title:"Mixer & filter install",loc:"Beldon"},
+  {cls:"p-a",tag:"Hot water",title:"50L electric swap-over",loc:"Joondalup",img:"https://images.unsplash.com/photo-1575299737366-39c143459bc5?w=900&q=80&auto=format&fit=crop"},
+  {cls:"p-w",tag:"Drainage",title:"Blocked main cleared & CCTV'd",loc:"Wanneroo",img:"https://images.unsplash.com/photo-1676210134188-4c05dd172f89?w=900&q=80&auto=format&fit=crop"},
+  {cls:"p-s",tag:"Gas",title:"Bayonet heater point",loc:"Currambine",img:"https://images.unsplash.com/photo-1601914697928-0b536e76d048?w=500&q=80&auto=format&fit=crop"},
+  {cls:"p-s",tag:"Emergency",title:"Burst pipe, 5:40am call-out",loc:"Ocean Reef",img:"https://images.unsplash.com/photo-1693874829318-43669125f796?w=500&q=80&auto=format&fit=crop"},
+  {cls:"p-w",tag:"Bathroom",title:"Full re-plumb & fit-off",loc:"Hillarys",img:"https://images.unsplash.com/photo-1721901945499-8fd5c1446b21?w=900&q=80&auto=format&fit=crop"},
+  {cls:"p-s",tag:"Kitchen",title:"Mixer & filter install",loc:"Beldon",img:"https://images.unsplash.com/photo-1676746817565-86db2fcf4d89?w=500&q=80&auto=format&fit=crop"},
 ];
 function Projects(){
   return(<section className="sec bt" id="projects">
@@ -722,9 +728,9 @@ function Projects(){
         sub="A snapshot of jobs around the northern suburbs — big, small and everything in between."/>
       <div className="proj-grid">
         {PROJECTS.map((p,i)=>{
-          const dim=p.cls==="p-a"?"900/900":p.cls==="p-w"?"900/460":"500/500";
-          return(<Reveal key={p.seed} delay={i*.06} className={"proj "+p.cls}>
-            <img src={"https://picsum.photos/seed/"+p.seed+"/"+dim+".jpg"} alt={p.title} loading="lazy"/>
+          const key=p.tag.toLowerCase().replace(/[^a-z]+/g,"-")+"-"+i;
+          return(<Reveal key={key} delay={i*.06} className={"proj "+p.cls}>
+            <img src={p.img} alt={p.title} loading="lazy"/>
             <span className="proj-tag">{p.tag}</span>
             <div className="proj-cap">
               <div><strong>{p.title}</strong><em>{p.loc}</em></div>
@@ -744,7 +750,7 @@ const TST=[
   {q:"Certified gas work, neat as anything. Booking was dead easy and they actually arrived when they said they would.",n:"Tom & Elle H.",s:"Hillarys",tag:"Gas fitting",w:410},
   {q:"They look after all the plumbing at our café now. Reliable on every single visit — that's worth a lot to a small business.",n:"Marco B.",s:"Ocean Reef",tag:"Commercial plumbing",w:390},
 ];
-function Testimonials(){
+function Testimonials({go}){
   const x=useMotionValue(0);
   const viewRef=useRef(),trackRef=useRef();
   const [minX,setMinX]=useState(0);
@@ -801,9 +807,9 @@ function Testimonials(){
         <button onClick={()=>goIdx(active-1)} aria-label="Previous review"><Icon name="chevL" size={19}/></button>
         <button onClick={()=>goIdx(active+1)} aria-label="Next review"><Icon name="chevR" size={19}/></button>
         <span className="tst-dots">
-          {TST.map((_,i)=>(<button key={i} className={"tdot"+(i===active?" on":"")} onClick={()=>goIdx(i)} aria-label={"Go to review "+(i+1)}/>))}
+          {TST.map((_,i)=>(<button key={i} className={"tdot"+(i===active?" on":"")} onClick={()=>goIdx(i)} aria-label={"Go to review "+(i+1)}>{i===active?active+1+" / "+TST.length:""}</button>))}
         </span>
-        <a className="tst-cta" href="#contact" onClick={e=>{e.preventDefault();scrollToSection("#contact");}}>Had a job done by us? Share your experience<Icon name="arrow" size={15}/></a>
+        <a className="tst-cta" href="#/contact" onClick={e=>{e.preventDefault();go.contact();}}>Had a job done by us? Share your experience<Icon name="arrow" size={15}/></a>
       </div>
     </div>
   </section>);
@@ -1053,7 +1059,7 @@ function Footer({go}){
       <div className="foot-col"><h4>Useful links</h4>
         {NAV.map(l=><a key={l.label} href={l.href} onClick={navClick(()=>l.go?go[l.go]():go.section(l.section))}>{l.label}</a>)}</div>
       <div className="foot-col"><h4>Services</h4>
-        {SERVICES.map(s=><a key={s.id} href="#services" onClick={navClick(()=>go.section("#services"))}>{s.title}</a>)}</div>
+        {SERVICES.map(s=><a key={s.id} href="#/services" onClick={navClick(()=>go.services())}>{s.title}</a>)}</div>
       <div className="foot-col"><h4>Contact details</h4>
         <span className="frow"><Icon name="pin" size={15}/>Beldon, Perth, WA 6027</span>
         <a className="frow" href={PHONE_HREF}><Icon name="phone" size={15}/>{PHONE}</a>
@@ -1111,17 +1117,58 @@ class ErrorBoundary extends React.Component{
 }
 
 /* ============ home page ============ */
-function HomePage({showToast,active}){
+function HomePage({active,go}){
   return(<>
-    <Hero active={active}/>
+    <Hero active={active} go={go}/>
     <EmergencyBand/>
-    <Services/>
     <Process/>
-    <Projects/>
-    <Testimonials/>
+    <Testimonials go={go}/>
     <Areas/>
-    <Contact showToast={showToast}/>
   </>);
+}
+
+/* ============ page hero ============ */
+function PageHero({kicker,title,sub}){
+  return(
+    <section className="ab-hero">
+      <div className="ab-glow"/>
+      <div className="wrap ab-hero-in">
+        <Rise className="eyebrow glass"><i className="dot"/>{kicker}</Rise>
+        <Rise delay={.08}><h1>{title}</h1></Rise>
+        {sub&&<Rise delay={.16}><p className="ab-lead">{sub}</p></Rise>}
+      </div>
+    </section>
+  );
+}
+
+/* ============ services page ============ */
+function ServicesPage(){
+  return(
+    <div id="services-page">
+      <PageHero kicker="Services" title={<>What we do, start to finish.</>} sub="From a dripping tap to a full heating circuit — one crew, honest quotes, and work left tidy."/>
+      <Services/>
+    </div>
+  );
+}
+
+/* ============ projects page ============ */
+function ProjectsPage(){
+  return(
+    <div id="projects-page">
+      <PageHero kicker="Projects" title="Recent work from the van." sub="A snapshot of jobs around Perth's northern suburbs — big, small and everything in between."/>
+      <Projects/>
+    </div>
+  );
+}
+
+/* ============ contact page ============ */
+function ContactPage({showToast}){
+  return(
+    <div id="contact-page">
+      <PageHero kicker="Contact" title="Let's get you sorted." sub="Call for the fastest response — or drop your details here and we'll ring you back. Quotes are upfront and honest, every time."/>
+      <Contact showToast={showToast}/>
+    </div>
+  );
 }
 
 /* ============ app ============ */
@@ -1148,6 +1195,21 @@ function App(){
     about:()=>{
       setHashSafe("#/about");
       applyRoute("about");
+      window.scrollTo(0,0);
+    },
+    services:()=>{
+      setHashSafe("#/services");
+      applyRoute("services");
+      window.scrollTo(0,0);
+    },
+    projects:()=>{
+      setHashSafe("#/projects");
+      applyRoute("projects");
+      window.scrollTo(0,0);
+    },
+    contact:()=>{
+      setHashSafe("#/contact");
+      applyRoute("contact");
       window.scrollTo(0,0);
     },
     section:(id)=>{
@@ -1177,9 +1239,14 @@ function App(){
   },[]);
   useEffect(()=>{if(toast){tRef.current=setTimeout(()=>setToast(null),4800);}},[toast]);
   useEffect(()=>{
-    document.title=route==="about"
-      ?"About Us — AmaPlumber Plumbing & Gas | Family Plumbers, Perth's North"
-      :"AmaPlumber Plumbing & Gas — 24/7 Plumbers & Gas Fitters, Perth's North";
+    const titles={
+      home:"AmaPlumber Plumbing & Gas — 24/7 Plumbers & Gas Fitters, Perth's North",
+      about:"About Us — AmaPlumber Plumbing & Gas | Family Plumbers, Perth's North",
+      services:"Services — AmaPlumber Plumbing & Gas | Plumbing & Gas, Perth's North",
+      projects:"Recent Work — AmaPlumber Plumbing & Gas | Projects, Perth's North",
+      contact:"Contact Us — AmaPlumber Plumbing & Gas | Perth's North",
+    };
+    document.title=titles[route]||titles.home;
   },[route]);
 
   return(<>
@@ -1187,13 +1254,22 @@ function App(){
     <Header route={route} go={go}/>
     <main>
       <ErrorBoundary>
-        {/* BOTH pages are always in the HTML. `hidden` is a plain attribute —
+        {/* ALL pages are always in the HTML. `hidden` is a plain attribute —
             no mounting, no unmounting, nothing that can fail to appear. */}
         <div className="pg" id="pg-home" hidden={route!=="home"}>
-          <HomePage showToast={showToast} active={route==="home"}/>
+          <HomePage active={route==="home"} go={go}/>
         </div>
         <div className="pg" id="pg-about" hidden={route!=="about"}>
           <About/>
+        </div>
+        <div className="pg" id="pg-services" hidden={route!=="services"}>
+          <ServicesPage/>
+        </div>
+        <div className="pg" id="pg-projects" hidden={route!=="projects"}>
+          <ProjectsPage/>
+        </div>
+        <div className="pg" id="pg-contact" hidden={route!=="contact"}>
+          <ContactPage showToast={showToast}/>
         </div>
       </ErrorBoundary>
     </main>
